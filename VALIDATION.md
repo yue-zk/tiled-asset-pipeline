@@ -33,11 +33,11 @@
 
 所有发布示例的 PNG 和描述均可通过自制夹具生成器在临时目录复现并逐字节对比。行为测试在临时目录运行，不在源码包中留下输出。
 
-## 尚未验证
+## 跨平台 CI 与能力边界
 
-GitHub Actions 配置 Windows/macOS/Linux × Python 3.11/3.14 六组组合；尚未实际在远程 CI 运行，不能声称全部通过。
+2026-11-05 首次 GitHub Actions 已通过 Windows/macOS/Linux × Python 3.11/3.14 六组组合，覆盖行为测试与仓库发布检查。对应源码提交为 `59eca75`，详见 [远程运行记录](https://github.com/yue-zk/tiled-asset-pipeline/actions/runs/42039566278)。
 
-Windows 缺 Python 的原生启动器测试等待 Windows CI。官方 uv 安装器及 Python 3.12 的实际下载没有在本机触发，相关分支以隔离桩验证命令和失败处理。
+Windows 缺 Python 的原生启动器测试已在 Windows CI 执行通过。官方 uv 安装器及 Python 3.12 的实际下载没有在本机触发，相关分支以隔离桩验证命令和失败处理。
 
 Tiled GUI 试刷、游戏引擎导入、碰撞和导航均未验证。离线渲染不呈现编辑器标签；文件和像素测试不能代替 GUI、艺术语义或用户视觉认可。
 
