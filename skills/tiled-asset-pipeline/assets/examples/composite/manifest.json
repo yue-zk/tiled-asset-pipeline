@@ -1,0 +1,1049 @@
+{
+  "version": 1,
+  "name": "demo-composite",
+  "mapTileSize": [
+    8,
+    8
+  ],
+  "gridEvidence": "自制 8px 网格，不是从图片尺寸整除猜测",
+  "scope": "自制地形与地图物件示例",
+  "sources": [
+    {
+      "id": "sheet",
+      "path": "sheet.png",
+      "sha256": "f899ac9a7cd2bf97cf0400d90a0289e17efc53629128a6332a470700d2ab14df",
+      "status": "included",
+      "notes": "本仓库自行绘制的几何测试素材；MIT"
+    }
+  ],
+  "imports": [],
+  "groups": [
+    {
+      "id": "ground",
+      "name": "草土地形"
+    },
+    {
+      "id": "building",
+      "name": "砖屋构件"
+    },
+    {
+      "id": "signal",
+      "name": "环境灯光"
+    }
+  ],
+  "tilesets": [
+    {
+      "id": "land",
+      "name": "原生地形",
+      "tileSize": [
+        8,
+        8
+      ],
+      "gridEvidence": "由本生成器显式绘制 8px；margin=0, spacing=0",
+      "tiles": [
+        {
+          "id": 0,
+          "source": "sheet",
+          "rect": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 0",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 1,
+          "source": "sheet",
+          "rect": [
+            8,
+            0,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 1",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 2,
+          "source": "sheet",
+          "rect": [
+            16,
+            0,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 2",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 3,
+          "source": "sheet",
+          "rect": [
+            24,
+            0,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 3",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 4,
+          "source": "sheet",
+          "rect": [
+            32,
+            0,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 4",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 5,
+          "source": "sheet",
+          "rect": [
+            40,
+            0,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 5",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 6,
+          "source": "sheet",
+          "rect": [
+            0,
+            8,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 6",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 7,
+          "source": "sheet",
+          "rect": [
+            8,
+            8,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 7",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 8,
+          "source": "sheet",
+          "rect": [
+            16,
+            8,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 8",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 9,
+          "source": "sheet",
+          "rect": [
+            24,
+            8,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 9",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 10,
+          "source": "sheet",
+          "rect": [
+            32,
+            8,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 10",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 11,
+          "source": "sheet",
+          "rect": [
+            40,
+            8,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 11",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 12,
+          "source": "sheet",
+          "rect": [
+            0,
+            16,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 12",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 13,
+          "source": "sheet",
+          "rect": [
+            8,
+            16,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 13",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 14,
+          "source": "sheet",
+          "rect": [
+            16,
+            16,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 14",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        },
+        {
+          "id": 15,
+          "source": "sheet",
+          "rect": [
+            24,
+            16,
+            8,
+            8
+          ],
+          "kind": "terrain",
+          "group": "ground",
+          "name": "连接 15",
+          "notes": "自制拓扑示意格",
+          "probability": 1
+        }
+      ],
+      "animations": [],
+      "wangsets": [
+        {
+          "id": "ground",
+          "name": "草土示意",
+          "type": "corner",
+          "colors": [
+            {
+              "name": "草地",
+              "color": "#3a834d",
+              "probability": 1
+            }
+          ],
+          "tiles": [
+            {
+              "tile": 0,
+              "wangid": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "tile": 1,
+              "wangid": [
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "tile": 2,
+              "wangid": [
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "tile": 3,
+              "wangid": [
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "tile": 4,
+              "wangid": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "tile": 5,
+              "wangid": [
+                0,
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "tile": 6,
+              "wangid": [
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "tile": 7,
+              "wangid": [
+                0,
+                1,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "tile": 8,
+              "wangid": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "tile": 9,
+              "wangid": [
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "tile": 10,
+              "wangid": [
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "tile": 11,
+              "wangid": [
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "tile": 12,
+              "wangid": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1
+              ]
+            },
+            {
+              "tile": 13,
+              "wangid": [
+                0,
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1
+              ]
+            },
+            {
+              "tile": 14,
+              "wangid": [
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1
+              ]
+            },
+            {
+              "tile": 15,
+              "wangid": [
+                0,
+                1,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1
+              ]
+            }
+          ],
+          "requiredPatterns": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1
+            ]
+          ],
+          "status": "complete",
+          "evidence": "自制四位拓扑定义；仅演示格式，不代表真实素材美术认可",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "building",
+      "name": "屋身",
+      "tileSize": [
+        8,
+        8
+      ],
+      "gridEvidence": "生成器显式 8px 构件",
+      "tiles": [
+        {
+          "id": 0,
+          "source": "sheet",
+          "rect": [
+            32,
+            16,
+            8,
+            8
+          ],
+          "kind": "tile",
+          "group": "building",
+          "name": "屋身构件 0",
+          "notes": "应按完整房屋图章复用"
+        },
+        {
+          "id": 1,
+          "source": "sheet",
+          "rect": [
+            40,
+            16,
+            8,
+            8
+          ],
+          "kind": "tile",
+          "group": "building",
+          "name": "屋身构件 1",
+          "notes": "应按完整房屋图章复用"
+        },
+        {
+          "id": 2,
+          "source": "sheet",
+          "rect": [
+            0,
+            24,
+            8,
+            8
+          ],
+          "kind": "tile",
+          "group": "building",
+          "name": "屋身构件 2",
+          "notes": "应按完整房屋图章复用"
+        },
+        {
+          "id": 3,
+          "source": "sheet",
+          "rect": [
+            8,
+            24,
+            8,
+            8
+          ],
+          "kind": "tile",
+          "group": "building",
+          "name": "屋身构件 3",
+          "notes": "应按完整房屋图章复用"
+        }
+      ],
+      "wangsets": [],
+      "animations": []
+    },
+    {
+      "id": "signal",
+      "name": "灯光",
+      "tileSize": [
+        8,
+        16
+      ],
+      "gridEvidence": "8px 完整帧画布",
+      "tiles": [
+        {
+          "id": 0,
+          "kind": "frame",
+          "group": "signal",
+          "name": "灯光帧 0",
+          "notes": "最后一帧完全透明；仍须保留",
+          "size": [
+            8,
+            16
+          ],
+          "parts": [
+            {
+              "source": "sheet",
+              "rect": [
+                32,
+                16,
+                8,
+                8
+              ],
+              "x": 0,
+              "y": 8
+            },
+            {
+              "source": "sheet",
+              "rect": [
+                16,
+                24,
+                8,
+                8
+              ],
+              "x": 0,
+              "y": 0
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "kind": "frame",
+          "group": "signal",
+          "name": "灯光帧 1",
+          "notes": "最后一帧完全透明；仍须保留",
+          "size": [
+            8,
+            16
+          ],
+          "parts": [
+            {
+              "source": "sheet",
+              "rect": [
+                32,
+                16,
+                8,
+                8
+              ],
+              "x": 0,
+              "y": 8
+            },
+            {
+              "source": "sheet",
+              "rect": [
+                24,
+                24,
+                8,
+                8
+              ],
+              "x": 0,
+              "y": 0
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "kind": "frame",
+          "group": "signal",
+          "name": "灯光帧 2",
+          "notes": "最后一帧完全透明；仍须保留",
+          "size": [
+            8,
+            16
+          ],
+          "parts": [
+            {
+              "source": "sheet",
+              "rect": [
+                32,
+                16,
+                8,
+                8
+              ],
+              "x": 0,
+              "y": 8
+            },
+            {
+              "source": "sheet",
+              "rect": [
+                32,
+                24,
+                8,
+                8
+              ],
+              "x": 0,
+              "y": 0
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "kind": "frame",
+          "group": "signal",
+          "name": "灯光帧 3",
+          "notes": "最后一帧完全透明；仍须保留",
+          "size": [
+            8,
+            16
+          ],
+          "parts": [
+            {
+              "source": "sheet",
+              "rect": [
+                32,
+                16,
+                8,
+                8
+              ],
+              "x": 0,
+              "y": 8
+            },
+            {
+              "source": "sheet",
+              "rect": [
+                40,
+                24,
+                8,
+                8
+              ],
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      ],
+      "wangsets": [],
+      "animations": [
+        {
+          "tile": 0,
+          "playback": "loop",
+          "timing": "native",
+          "evidence": "示例定义每帧 120ms",
+          "frames": [
+            {
+              "tile": 0,
+              "durationMs": 120
+            },
+            {
+              "tile": 3,
+              "durationMs": 120
+            },
+            {
+              "tile": 6,
+              "durationMs": 120
+            },
+            {
+              "tile": 9,
+              "durationMs": 120
+            }
+          ]
+        },
+        {
+          "tile": 3,
+          "playback": "once",
+          "timing": "preview",
+          "evidence": "示例单次预览速度，非素材原生",
+          "frames": [
+            {
+              "tile": 0,
+              "durationMs": 160
+            },
+            {
+              "tile": 3,
+              "durationMs": 160
+            },
+            {
+              "tile": 6,
+              "durationMs": 160
+            },
+            {
+              "tile": 9,
+              "durationMs": 160
+            }
+          ]
+        },
+        {
+          "tile": 6,
+          "playback": "states",
+          "timing": "preview",
+          "evidence": "状态集合，时长仅占位预览",
+          "frames": [
+            {
+              "tile": 0,
+              "durationMs": 100
+            },
+            {
+              "tile": 3,
+              "durationMs": 100
+            },
+            {
+              "tile": 6,
+              "durationMs": 100
+            },
+            {
+              "tile": 9,
+              "durationMs": 100
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stamps": [
+    {
+      "id": "house",
+      "tileId": 4,
+      "name": "完整砖屋",
+      "group": "building",
+      "size": [
+        16,
+        16
+      ],
+      "anchor": [
+        8,
+        16
+      ],
+      "footprint": [
+        0,
+        8,
+        16,
+        8
+      ],
+      "evidence": "四个源格按定义重组，主体完整",
+      "parts": [
+        {
+          "tileset": "building",
+          "tile": 0,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "tileset": "building",
+          "tile": 1,
+          "x": 8,
+          "y": 0
+        },
+        {
+          "tileset": "building",
+          "tile": 2,
+          "x": 0,
+          "y": 8
+        },
+        {
+          "tileset": "building",
+          "tile": 3,
+          "x": 8,
+          "y": 8
+        }
+      ]
+    }
+  ],
+  "combinations": [
+    {
+      "id": "row-houses",
+      "name": "双屋共边排列",
+      "group": "building",
+      "size": [
+        32,
+        16
+      ],
+      "relation": "两栋完整屋身的侧边贴合，接地点同高",
+      "evidence": "明确成员坐标的独立重组",
+      "members": [
+        {
+          "stamp": "house",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "stamp": "house",
+          "x": 16,
+          "y": 0
+        }
+      ]
+    }
+  ],
+  "pending": [],
+  "terrainExclusions": [],
+  "exclusions": []
+}

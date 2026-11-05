@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tiled 素材与地形集整理"
+  short_description: "统一转换像素素材为图块、地形、完整图章与展示地图，自动准备本地依赖"
+  default_prompt: "使用 $tiled-asset-pipeline 整理这套素材，自动检查并补齐依赖，分析后用通用转换器生成 TSX、Terrain/Wang 和素材展示 TMX。"

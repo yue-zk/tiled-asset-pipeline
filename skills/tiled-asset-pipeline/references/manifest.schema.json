@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tiled Asset Manifest v1",
+  "type": "object",
+  "required": ["version", "name", "mapTileSize", "gridEvidence", "scope", "sources", "groups", "tilesets", "stamps", "combinations", "pending"],
+  "properties": {
+    "version": {"const": 1, "type": "integer"},
+    "name": {"$ref": "#/$defs/id"},
+    "mapTileSize": {"$ref": "#/$defs/size"},
+    "gridEvidence": {"$ref": "#/$defs/text"},
+    "scope": {"$ref": "#/$defs/text"},
+    "sources": {"type": "array", "minItems": 1, "maxItems": 1024, "items": {"$ref": "#/$defs/source"}},
+    "imports": {"type": "array", "items": {"type": "object", "required": ["path", "sha256"], "properties": {"path": {"$ref": "#/$defs/path"}, "sha256": {"$ref": "#/$defs/hash"}}}},
+    "groups": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["id", "name"], "properties": {"id": {"$ref": "#/$defs/id"}, "name": {"$ref": "#/$defs/text"}}}},
+    "tilesets": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/tileset"}},
+    "stamps": {"type": "array", "items": {"$ref": "#/$defs/stamp"}},
+    "combinations": {"type": "array", "items": {"$ref": "#/$defs/combination"}},
+    "terrainExclusions": {"type": "array", "items": {"type": "object", "required": ["family", "reason"], "properties": {"family": {"$ref": "#/$defs/text"}, "reason": {"$ref": "#/$defs/text"}}}},
+    "exclusions": {"type": "array", "items": {"type": "object", "required": ["source", "rect", "reason"], "properties": {"source": {"$ref": "#/$defs/id"}, "rect": {"$ref": "#/$defs/rect"}, "reason": {"$ref": "#/$defs/text"}}}},
+    "pending": {"type": "array", "maxItems": 0}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]{0,63}$"},
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "path": {"type": "string", "minLength": 1, "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\\\:]+$"},
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "localId": {"type": "integer", "minimum": 0, "maximum": 65535},
+    "probability": {"type": "number", "minimum": 0, "maximum": 10000},
+    "size": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": 1, "maximum": 4096}},
+    "point": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": 0, "maximum": 4096}},
+    "rect": {"type": "array", "minItems": 4, "maxItems": 4, "prefixItems": [{"type": "integer", "minimum": 0}, {"type": "integer", "minimum": 0}, {"type": "integer", "minimum": 1, "maximum": 4096}, {"type": "integer", "minimum": 1, "maximum": 4096}]},
+    "wangid": {"type": "array", "minItems": 8, "maxItems": 8, "items": {"type": "integer", "minimum": 0, "maximum": 8}},
+    "source": {
+      "type": "object", "required": ["id", "path", "sha256", "status", "notes"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "path": {"$ref": "#/$defs/path"}, "sha256": {"$ref": "#/$defs/hash"}, "status": {"enum": ["included", "excluded"]}, "notes": {"$ref": "#/$defs/text"}}
+    },
+    "tile": {
+      "type": "object", "required": ["id", "kind", "group", "name"],
+      "oneOf": [
+        {"required": ["source", "rect"], "not": {"anyOf": [{"required": ["size"]}, {"required": ["parts"]}]}},
+        {"required": ["size", "parts"], "not": {"anyOf": [{"required": ["source"]}, {"required": ["rect"]}]}}
+      ],
+      "properties": {"id": {"$ref": "#/$defs/localId"}, "source": {"$ref": "#/$defs/id"}, "rect": {"$ref": "#/$defs/rect"}, "size": {"$ref": "#/$defs/size"}, "parts": {"type": "array", "minItems": 1, "maxItems": 256, "items": {"type": "object", "required": ["source", "rect", "x", "y"], "properties": {"source": {"$ref": "#/$defs/id"}, "rect": {"$ref": "#/$defs/rect"}, "x": {"type": "integer", "minimum": 0}, "y": {"type": "integer", "minimum": 0}}}}, "kind": {"enum": ["tile", "terrain", "frame"]}, "group": {"$ref": "#/$defs/id"}, "name": {"$ref": "#/$defs/text"}, "notes": {"type": "string"}, "probability": {"$ref": "#/$defs/probability"}}
+    },
+    "wangset": {
+      "type": "object", "required": ["id", "name", "type", "colors", "tiles", "requiredPatterns", "status", "evidence", "notes"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "name": {"$ref": "#/$defs/text"}, "type": {"enum": ["corner", "edge", "mixed"]},
+        "colors": {"type": "array", "minItems": 1, "maxItems": 8, "items": {"type": "object", "required": ["name", "color"], "properties": {"name": {"$ref": "#/$defs/text"}, "color": {"type": "string", "pattern": "^#[a-fA-F0-9]{6}$"}, "probability": {"$ref": "#/$defs/probability"}}}},
+        "tiles": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["tile", "wangid"], "properties": {"tile": {"$ref": "#/$defs/localId"}, "wangid": {"$ref": "#/$defs/wangid"}}}},
+        "requiredPatterns": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/wangid"}},
+        "status": {"enum": ["complete", "limited"]}, "evidence": {"$ref": "#/$defs/text"}, "notes": {"type": "string"}
+      }
+    },
+    "animation": {
+      "type": "object", "required": ["tile", "playback", "timing", "evidence", "frames"],
+      "properties": {
+        "tile": {"$ref": "#/$defs/localId"}, "playback": {"enum": ["loop", "once", "states"]}, "timing": {"enum": ["native", "preview"]}, "evidence": {"$ref": "#/$defs/text"},
+        "frames": {"type": "array", "minItems": 1, "maxItems": 256, "items": {"type": "object", "required": ["tile", "durationMs"], "properties": {"tile": {"$ref": "#/$defs/localId"}, "durationMs": {"type": "integer", "minimum": 1, "maximum": 60000}}}}
+      }
+    },
+    "tileset": {
+      "type": "object", "required": ["id", "name", "tileSize", "gridEvidence", "tiles"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "name": {"$ref": "#/$defs/text"}, "tileSize": {"$ref": "#/$defs/size"}, "gridEvidence": {"$ref": "#/$defs/text"}, "tiles": {"type": "array", "minItems": 1, "maxItems": 8192, "items": {"$ref": "#/$defs/tile"}}, "tileOffset": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": -4096, "maximum": 4096}}, "wangsets": {"type": "array", "items": {"$ref": "#/$defs/wangset"}}, "animations": {"type": "array", "items": {"$ref": "#/$defs/animation"}}}
+    },
+    "stamp": {
+      "type": "object", "required": ["id", "tileId", "name", "group", "size", "anchor", "footprint", "evidence", "parts"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "tileId": {"$ref": "#/$defs/localId"}, "name": {"$ref": "#/$defs/text"}, "group": {"$ref": "#/$defs/id"}, "size": {"$ref": "#/$defs/size"}, "anchor": {"$ref": "#/$defs/point"}, "footprint": {"$ref": "#/$defs/rect"}, "evidence": {"$ref": "#/$defs/text"}, "parts": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["tileset", "tile", "x", "y"], "properties": {"tileset": {"$ref": "#/$defs/id"}, "tile": {"$ref": "#/$defs/localId"}, "x": {"type": "integer", "minimum": 0}, "y": {"type": "integer", "minimum": 0}}}}}
+    },
+    "combination": {
+      "type": "object", "required": ["id", "name", "group", "size", "relation", "evidence", "members"],
+      "properties": {"id": {"$ref": "#/$defs/id"}, "name": {"$ref": "#/$defs/text"}, "group": {"$ref": "#/$defs/id"}, "size": {"$ref": "#/$defs/size"}, "relation": {"$ref": "#/$defs/text"}, "evidence": {"$ref": "#/$defs/text"}, "notes": {"type": "string"}, "members": {"type": "array", "minItems": 2, "items": {"type": "object", "required": ["stamp", "x", "y"], "properties": {"stamp": {"$ref": "#/$defs/id"}, "x": {"type": "integer", "minimum": 0}, "y": {"type": "integer", "minimum": 0}}}}}
+    }
+  }
+}
